@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <dimen name="img_thumb_w">300dp</dimen>
+    <dimen name="img_thumb_h">150dp</dimen>
+
+    <dimen name="small_spacing">4dp</dimen>
+    <dimen name="mid_spacing">8dp</dimen>
+    <dimen name="big_spacing">16dp</dimen>
+
+</resources>
