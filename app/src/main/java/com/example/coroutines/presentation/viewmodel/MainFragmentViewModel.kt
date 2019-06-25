@@ -4,6 +4,7 @@ package com.example.coroutines.presentation.viewmodel
 import androidx.lifecycle.*
 import com.example.coroutines.data.model.PicData
 import com.example.coroutines.presentation.model.PicView
+import com.example.coroutines.presentation.model.StateView
 import com.example.coroutines.repository.impl.PicsRepositoryImpl
 import com.example.coroutines.repository.interfaces.PicsRepository
 import kotlinx.coroutines.Dispatchers
@@ -19,13 +20,18 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
     /**
      * Mutable data stored internally retrieved from source
      */
-    private var privateData : MutableLiveData<List<PicView>> = MutableLiveData()
+    private var privateData = MutableLiveData<List<PicView>>()
 
     /**
      * Immutable data available for UI controllers
      */
     val exposedData : LiveData<List<PicView>>
         get() = this.privateData
+
+    /**
+     * View state (loading, data, error)
+     */
+    var exposedState = MutableLiveData<StateView>()//TODO: as immutable
 
 
     /**
@@ -41,6 +47,10 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
         this.viewModelScope.launch {
             var retrievedList: List<PicData>? = null
 
+
+        // 0. prepare view
+            exposedState.value = StateView(loading = true)
+
         // 1. fetch result...
 
             //XXX: swith to back thread...
@@ -48,12 +58,13 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
                 retrievedList = repo.retrieveList()
             }
 
-
         // 2. ... and send result to UI thread
 
             //XXX: not needed, it is redundant, already on main thread
             withContext(Dispatchers.Main) {
                 privateData.value = retrievedList?.map { PicView(it.id, it.urls.regular) }
+
+                exposedState.value = StateView(loading = false)
             }
         }
     }

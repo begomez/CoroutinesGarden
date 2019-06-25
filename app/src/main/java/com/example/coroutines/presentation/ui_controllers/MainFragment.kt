@@ -14,6 +14,7 @@ import com.example.coroutines.R
 import com.example.coroutines.presentation.viewmodel.MainFragmentViewModel
 import com.example.coroutines.presentation.adapter.PicsAdapter
 import com.example.coroutines.presentation.model.PicView
+import com.example.coroutines.presentation.model.StateView
 import com.example.coroutines.presentation.viewmodel.MainFragmentViewModelFactory
 import com.example.coroutines.repository.impl.PicsRepositoryImpl
 import kotlinx.android.synthetic.main.fragment_main.*
@@ -45,13 +46,19 @@ class MainFragment : Fragment() {
         //XXX: observe changes on data stored on vm
         this.mainFragmentViewModel.exposedData.observe(this,
             Observer<List<PicView>> { t -> this.refreshList(t!!) })
+
+        //XXX: observe changes on state
+        this.mainFragmentViewModel.exposedState.observe(this,
+            Observer<StateView> { if (it.loading) showProgress() else hideProgress()})
     }
 
     override fun onStart() {
         super.onStart()
 
-        this.fab.setOnClickListener { fetchData() }
+        this.configViews()
     }
+
+    private fun configViews() = this.fab.setOnClickListener { fetchData() }
 
     private fun fetchData() {
         try {

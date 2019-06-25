@@ -16,6 +16,8 @@ import java.lang.Thread.sleep
 class PicsAPIImpl(var service : PicsService = ServiceFactory.createPicsService()) : PicsAPI {
 
     override suspend fun fetchPics(): List<PicData> {
+        sleep(3000)
+
         var temp : Call<List<PicData>> = this.service.getPics()
 
         var resp : Response<List<PicData>> = temp.execute()
