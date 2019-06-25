@@ -31,7 +31,7 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
     /**
      * View state (loading, data, error)
      */
-    var exposedState = MutableLiveData<StateView>()//TODO: as immutable
+    var exposedState = MutableLiveData<StateView>()//TODO: expose as immutable
 
 
     /**
@@ -48,25 +48,25 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
             var retrievedList: List<PicData>? = null
 
 
-        // 0. prepare view
-            exposedState.value = StateView(loading = true)
-
-        // 1. fetch result...
+            startLoad()
 
             //XXX: swith to back thread...
             withContext(Dispatchers.IO) {
                 retrievedList = repo.retrieveList()
             }
 
-        // 2. ... and send result to UI thread
+            privateData.value = retrievedList?.map { PicView(it.id, it.urls.regular) }
 
-            //XXX: not needed, it is redundant, already on main thread
-            withContext(Dispatchers.Main) {
-                privateData.value = retrievedList?.map { PicView(it.id, it.urls.regular) }
-
-                exposedState.value = StateView(loading = false)
-            }
+            endLoad()
         }
+    }
+
+    private fun startLoad() {
+        this.exposedState.value = StateView(loading = true)
+    }
+
+    private fun endLoad() {
+        this.exposedState.value = StateView(loading = false)
     }
 }
 
