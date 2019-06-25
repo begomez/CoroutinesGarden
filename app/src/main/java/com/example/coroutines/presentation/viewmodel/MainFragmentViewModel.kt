@@ -1,7 +1,8 @@
-package com.example.coroutines.presentation
+package com.example.coroutines.presentation.viewmodel
 
 import androidx.lifecycle.*
-import com.example.coroutines.repository.PicsRepositoryImpl
+import com.example.coroutines.presentation.model.PicView
+import com.example.coroutines.repository.impl.PicsRepositoryImpl
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 

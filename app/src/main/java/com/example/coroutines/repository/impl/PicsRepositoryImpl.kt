@@ -1,7 +1,8 @@
-package com.example.coroutines.repository
+package com.example.coroutines.repository.impl
 
-import com.example.coroutines.data.PicsAPI
-import com.example.coroutines.data.PicsAPIImpl
+import com.example.coroutines.data.api.interfaces.PicsAPI
+import com.example.coroutines.data.api.impl.PicsAPIImpl
+import com.example.coroutines.repository.interfaces.PicsRepository
 
 
 class PicsRepositoryImpl : PicsRepository {

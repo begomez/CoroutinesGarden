@@ -1,4 +1,4 @@
-package com.example.coroutines.presentation
+package com.example.coroutines.presentation.adapter
 
 
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coroutines.R
+import com.example.coroutines.presentation.model.PicView
 import com.squareup.picasso.Picasso
 
 

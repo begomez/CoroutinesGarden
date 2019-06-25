@@ -1,6 +1,6 @@
-package com.example.coroutines.repository
+package com.example.coroutines.repository.interfaces
 
-import com.example.coroutines.data.PicData
+import com.example.coroutines.data.model.PicData
 
 
 interface PicsRepository {

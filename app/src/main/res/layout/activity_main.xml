@@ -9,12 +9,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
 
-        tools:context=".presentation.MainActivity">
+        tools:context=".presentation.ui_controllers.MainActivity">
 
     <fragment
             android:id="@+id/mainContent"
 
-            class="com.example.coroutines.presentation.MainFragment"
+            class="com.example.coroutines.presentation.ui_controllers.MainFragment"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"

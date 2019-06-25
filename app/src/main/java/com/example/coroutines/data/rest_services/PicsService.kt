@@ -1,6 +1,6 @@
-package com.example.coroutines.data
+package com.example.coroutines.data.rest_services
 
-import com.example.coroutines.data.PicData
+import com.example.coroutines.data.model.PicData
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

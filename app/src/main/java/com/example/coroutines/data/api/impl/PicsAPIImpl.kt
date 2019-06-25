@@ -1,5 +1,8 @@
-package com.example.coroutines.data
+package com.example.coroutines.data.api.impl
 
+import com.example.coroutines.data.api.interfaces.PicsAPI
+import com.example.coroutines.data.model.PicData
+import com.example.coroutines.data.rest_services.factories.ServiceFactory
 import retrofit2.Call
 import retrofit2.Response
 

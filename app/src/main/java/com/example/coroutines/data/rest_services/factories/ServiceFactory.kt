@@ -1,6 +1,8 @@
-package com.example.coroutines.data
+package com.example.coroutines.data.rest_services.factories
 
 
+import com.example.coroutines.data.rest_services.PicsService
+import com.example.coroutines.data.rest_services.interceptors.SecInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
@@ -16,7 +18,9 @@ object ServiceFactory {
 
     val TIMEOUT = 30000L
 
-    public fun createPicsService() : PicsService = createFactory(URL_PICS).create(PicsService::class.java)
+    public fun createPicsService() : PicsService = createFactory(
+        URL_PICS
+    ).create(PicsService::class.java)
 
     private fun createFactory(url : String) : Retrofit {
         var gson : Gson = GsonBuilder().apply {

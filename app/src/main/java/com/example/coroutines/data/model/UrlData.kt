@@ -1,4 +1,4 @@
-package com.example.coroutines.data
+package com.example.coroutines.data.model
 
 import android.os.Parcel
 import android.os.Parcelable

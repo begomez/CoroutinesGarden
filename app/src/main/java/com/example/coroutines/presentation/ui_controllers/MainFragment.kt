@@ -1,4 +1,4 @@
-package com.example.coroutines.presentation
+package com.example.coroutines.presentation.ui_controllers
 
 
 import android.os.Bundle
@@ -11,6 +11,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.coroutines.R
+import com.example.coroutines.presentation.viewmodel.MainFragmentViewModel
+import com.example.coroutines.presentation.adapter.PicsAdapter
+import com.example.coroutines.presentation.model.PicView
 import kotlinx.android.synthetic.main.fragment_main.*
 import java.lang.Exception
 
