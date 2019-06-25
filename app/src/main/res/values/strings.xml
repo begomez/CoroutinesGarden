@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CoroutinesSample</string>
+    <string name="list_hint">Fetch data using fab</string>
 </resources>

@@ -50,7 +50,7 @@ class MainFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        this.fetchData()
+        this.fab.setOnClickListener { fetchData() }
     }
 
     private fun fetchData() {
@@ -68,11 +68,14 @@ class MainFragment : Fragment() {
         inflater.inflate(R.layout.fragment_main, container, false)
 
     private fun refreshList(list : List<PicView>) {
+        this.empty.visibility = View.INVISIBLE
+
         var adapter = PicsAdapter(list)
 
         this.list.apply {
             val SPAN = 1
 
+            this.visibility = View.VISIBLE
             this.layoutManager = GridLayoutManager(this@MainFragment.activity, SPAN, RecyclerView.VERTICAL, false)
             this.setHasFixedSize(false)
             this.adapter = adapter
