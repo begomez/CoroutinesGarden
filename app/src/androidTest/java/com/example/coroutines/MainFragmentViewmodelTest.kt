@@ -59,6 +59,7 @@ class MainFragmentViewmodelTest {
     fun testGetList() {
 
         //XXX: "runBlockingTest" is similar to scope.lauch(i.e its a hook for coroutines when testing)
+        //but waits for execution result
         this.dispatcher.runBlockingTest{
 
             // ARRANGE
