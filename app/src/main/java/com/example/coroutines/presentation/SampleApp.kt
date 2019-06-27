@@ -4,7 +4,7 @@ package com.example.coroutines.presentation
 import android.app.Application
 import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
-import com.example.coroutines.workers.TestWorker
+import com.example.coroutines.workers.SampleWorker
 
 
 class SampleApp : Application() {
@@ -16,7 +16,7 @@ class SampleApp : Application() {
     }
 
     private fun configWork() {
-        val work = OneTimeWorkRequestBuilder<TestWorker>().build()
+        val work = OneTimeWorkRequestBuilder<SampleWorker>().build()
 
         WorkManager.getInstance().enqueue(work)
     }
