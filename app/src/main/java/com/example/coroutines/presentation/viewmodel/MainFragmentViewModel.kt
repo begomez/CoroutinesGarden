@@ -45,15 +45,9 @@ class MainFragmentViewModel(var repo : PicsRepository = PicsRepositoryImpl()) : 
          *
          */
         this.viewModelScope.launch {
-            var retrievedList: List<PicData>? = null
-
-
             startLoad()
 
-            //XXX: swith to back thread...
-            withContext(Dispatchers.IO) {
-                retrievedList = repo.retrieveList()
-            }
+            var retrievedList = repo.retrieveList()
 
             privateData.value = retrievedList?.map { PicView(it.id, it.urls.regular) }
 
