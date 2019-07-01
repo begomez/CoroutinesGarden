@@ -21,11 +21,7 @@ class PicsAPIImpl(var service : PicsService = ServiceFactory.createPicsService()
     override suspend fun fetchPics(): List<PicData> {
         sleep(DELAY)
 
-        var temp : Call<List<PicData>> = this.service.getPics()
-
-        var resp : Response<List<PicData>> = temp.execute()
-
-        return resp.body()!!
+        return this.service.getPics().await()
     }
 
     override suspend fun fetchPicById(id: Long) = PicData("")//TODO: implement...
